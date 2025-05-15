@@ -10,20 +10,21 @@ import org.springframework.stereotype.Service;
 public class ExternalApiService {
 
     private final Client client;
+    private final String url="https://api.chucknorris.io/jokes/random";
 
     public ExternalApiService(Client client){
         this.client=client;
     }
 
     public String callExternalApi(){
-        WebTarget target =client.target("https://api.chucknorris.io/jokes/random");
+        WebTarget target =client.target(url);
 
         Response response = target.request(MediaType.APPLICATION_JSON).get();
 
         if(response.getStatus()==200){
             return response.readEntity(String.class);
         }else{
-            throw new RuntimeException("Failed HTTP Error code:"+response.getStatus());
+            throw new RuntimeException("Error. Code:"+response.getStatus());
         }
     }
 }

@@ -1,6 +1,8 @@
 package com.claro.clientesapi.config;
 
 import com.claro.clientesapi.controller.ClienteController;
+import com.claro.clientesapi.controller.RandomRestApiController;
+import com.claro.clientesapi.controller.RandomSoapApiController;
 import com.claro.clientesapi.exception.ClienteBadRequestExceptionMapper;
 import com.claro.clientesapi.exception.ClienteNoEncontradoExceptionMapper;
 import jakarta.ws.rs.ApplicationPath;
@@ -16,6 +18,8 @@ public class JerseyConfig extends ResourceConfig {
 
     public JerseyConfig() {
         register(ClienteController.class);
+        register(RandomRestApiController.class);
+        register(RandomSoapApiController.class);
         register(ClienteBadRequestExceptionMapper.class);
         register(ClienteNoEncontradoExceptionMapper.class);
     }

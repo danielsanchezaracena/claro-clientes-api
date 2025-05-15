@@ -17,12 +17,10 @@ import java.util.List;
 public class ClienteController {
 
     private final ClienteService clienteService;
-    private final ExternalApiService externalApiService;
 
     @Inject
-    public ClienteController(ClienteService clienteService, ExternalApiService externalApiService) {
+    public ClienteController(ClienteService clienteService) {
         this.clienteService = clienteService;
-        this.externalApiService = externalApiService;
     }
 
 
@@ -59,11 +57,6 @@ public class ClienteController {
         return Response.ok(c).status(Response.Status.OK).build();
     }
 
-    @GET
-    @Path("/randomjson")
-    public Response getRandomJSON(){
-        String result=externalApiService.callExternalApi();
-        return Response.ok(result).build();
-        }
+
     }
 
