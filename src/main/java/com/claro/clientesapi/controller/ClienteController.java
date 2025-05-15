@@ -3,6 +3,7 @@ package com.claro.clientesapi.controller;
 import com.claro.clientesapi.dto.ClienteRequestDTO;
 import com.claro.clientesapi.dto.ClienteResponseDTO;
 import com.claro.clientesapi.entity.Cliente;
+import com.claro.clientesapi.external.ExternalApiService;
 import com.claro.clientesapi.service.ClienteService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -15,8 +16,15 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 public class ClienteController {
 
+    private final ClienteService clienteService;
+    private final ExternalApiService externalApiService;
+
     @Inject
-    private ClienteService clienteService;
+    public ClienteController(ClienteService clienteService, ExternalApiService externalApiService) {
+        this.clienteService = clienteService;
+        this.externalApiService = externalApiService;
+    }
+
 
     @POST
     public Response crearCliente(ClienteRequestDTO cliente){
@@ -50,4 +58,12 @@ public class ClienteController {
         ClienteResponseDTO c=clienteService.modificarCliente(id,cliente);
         return Response.ok(c).status(Response.Status.OK).build();
     }
-}
+
+    @GET
+    @Path("/randomjson")
+    public Response getRandomJSON(){
+        String result=externalApiService.callExternalApi();
+        return Response.ok(result).build();
+        }
+    }
+
