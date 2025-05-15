@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -27,11 +28,11 @@ public class Cliente {
     @Column(name = "apellido",nullable = false)
     private String apellido;
 
-    @Column(name = "activo")
-    private boolean activo;
+    @Column(name = "activo",nullable = false,columnDefinition = "BOOLEAN DEFAULT TRUE")
+    private boolean activo=true;
 
-    @OneToMany(mappedBy = "cliente",cascade = CascadeType.ALL,orphanRemoval = true)
-    private List<Direccion> direcciones;
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "cliente",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Direccion> direcciones=new ArrayList<>();
 
     public Long getId() {
         return id;

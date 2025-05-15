@@ -1,5 +1,7 @@
 package com.claro.clientesapi.dto;
 
+import jakarta.validation.constraints.NotBlank;
+
 import java.util.List;
 
 public class ClienteRequestDTO {
@@ -8,7 +10,7 @@ public class ClienteRequestDTO {
 
     private String apellido;
 
-    private List<DireccionRequestDTO> direcciones;
+    private List<String> direcciones;
 
     public String getNombre() {
         return nombre;
@@ -26,11 +28,12 @@ public class ClienteRequestDTO {
         this.apellido = apellido;
     }
 
-    public List<DireccionRequestDTO> getDirecciones() {
+    public List<String> getDirecciones() {
         return direcciones;
     }
 
-    public void setDirecciones(List<DireccionRequestDTO> direcciones) {
+    public void setDirecciones(List<String> direcciones) {
         this.direcciones = direcciones;
     }
+    
 }

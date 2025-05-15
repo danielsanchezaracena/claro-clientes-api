@@ -1,20 +1,21 @@
 package com.claro.clientesapi.service;
 
 import com.claro.clientesapi.dto.ClienteRequestDTO;
+import com.claro.clientesapi.dto.ClienteResponseDTO;
 import com.claro.clientesapi.entity.Cliente;
 
 import java.util.List;
 
 public interface ClienteService {
 
-    Cliente crearCliente(ClienteRequestDTO request);
+    ClienteResponseDTO crearCliente(ClienteRequestDTO request);
 
-    Cliente getCliente(Long id);
+    ClienteResponseDTO getCliente(Long id);
 
-    List<Cliente> getAllClientes();
+    List<ClienteResponseDTO> getAllClientes();
 
     void eliminarCliente(Long id);
 
-    Cliente modificarCliente(Long id, ClienteRequestDTO request);
+    ClienteResponseDTO modificarCliente(Long id, ClienteRequestDTO request);
 
 }

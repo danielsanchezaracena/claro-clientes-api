@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 
 @Entity
 @Table(name = "direccion")
-@Data
 @NoArgsConstructor
 @RequiredArgsConstructor
 public class Direccion {
@@ -22,8 +21,8 @@ public class Direccion {
     @Column(name = "direccion",nullable = false)
     private String direccion;
 
-    @Column(name = "activo")
-    private boolean activo;
+    @Column(name = "activo",nullable = false,columnDefinition = "BOOLEAN DEFAULT TRUE")
+    private boolean activo=true;
 
     @ManyToOne
     @JoinColumn(name = "id_cliente")
@@ -60,4 +59,6 @@ public class Direccion {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+
 }
