@@ -8,7 +8,7 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
-@Path("/random")
+@Path("/randomrest")
 @Produces(MediaType.APPLICATION_JSON)
 public class RandomRestApiController {
 
@@ -20,7 +20,6 @@ public class RandomRestApiController {
     }
 
     @GET
-    @Path("/rest")
     public Response getRandomREST(){
         String result=apiService.callExternalApi();
         return Response.ok(result).build();

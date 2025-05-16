@@ -1,6 +1,10 @@
 package com.claro.clientesapi.controller;
 
+import com.claro.clientesapi.dto.CalculatorAddRequest;
+import com.claro.clientesapi.utils.XmlUtil;
+import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.client.Client;
@@ -15,29 +19,40 @@ import org.json.XML;
 @Produces(MediaType.APPLICATION_JSON)
 public class RandomSoapApiController {
 
-    @GET
-    public Response randomSOAPEndpoint(){
-       final String endpointUrl = "http://www.dneonline.com/calculator.asmx";
+    private final Client client;
 
-        final String soapRequestXml ="""
-                <?xml version="1.0" encoding="utf-8"?>
+    @Inject
+    public RandomSoapApiController(Client client) {
+        this.client = client;
+    }
+
+    @POST
+    public Response randomSOAPEndpoint() throws Exception {
+        String uri = "http://www.dneonline.com/calculator.asmx";
+
+        CalculatorAddRequest dto = new CalculatorAddRequest(10, 20);
+
+        String bodyXml = XmlUtil.toXml(dto);
+
+        StringBuilder sbRequest=new StringBuilder();
+
+        sbRequest.append("""
+               <?xml version="1.0" encoding="utf-8"?>
                 <soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
                   <soap12:Body>
-                    <Add xmlns="http://tempuri.org/">
-                      <intA>5</intA>
-                      <intB>2</intB>
-                    </Add>
+               """);
+        sbRequest.append(bodyXml);
+        sbRequest.append("""
                   </soap12:Body>
                 </soap12:Envelope>
-                """;
+               """);
 
-        Client client = ClientBuilder.newClient();
 
         Response response = client
-                .target(endpointUrl)
+                .target(uri)
                 .request()
                 .header("Content-Type", "application/soap+xml; charset=utf-8")
-                .post(Entity.entity(soapRequestXml, MediaType.TEXT_XML));
+                .post(Entity.entity(sbRequest.toString(), MediaType.TEXT_XML));
 
         if(response.getStatus()!=200)
             throw new RuntimeException("Error. Code:"+response.getStatus());
