@@ -4,14 +4,14 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "Add", namespace = "http://tempuri.org/")
-public class CalculatorAddRequest {
+public class CalculatorAddSoapRequest {
 
     private int intA;
     private int intB;
 
-    public CalculatorAddRequest() {}
+    public CalculatorAddSoapRequest() {}
 
-    public CalculatorAddRequest(int intA, int intB) {
+    public CalculatorAddSoapRequest(int intA, int intB) {
         this.intA = intA;
         this.intB = intB;
     }
