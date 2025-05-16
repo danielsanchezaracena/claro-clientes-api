@@ -45,7 +45,7 @@ public class RandomSoapApiController {
         String responseXml = response.readEntity(String.class);
 
         JSONObject jsonObject = XML.toJSONObject(responseXml);
-        String jsonResponse = jsonObject.toString(4); // 4 = indent factor
+        String jsonResponse = jsonObject.toString(4);
 
         response.close();
         client.close();

@@ -1,7 +1,5 @@
 package com.claro.clientesapi.dto;
 
-import lombok.Data;
-
 import java.util.List;
 
 public class ClienteResponseDTO {

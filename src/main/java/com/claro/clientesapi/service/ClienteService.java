@@ -2,7 +2,6 @@ package com.claro.clientesapi.service;
 
 import com.claro.clientesapi.dto.ClienteRequestDTO;
 import com.claro.clientesapi.dto.ClienteResponseDTO;
-import com.claro.clientesapi.entity.Cliente;
 
 import java.util.List;
 

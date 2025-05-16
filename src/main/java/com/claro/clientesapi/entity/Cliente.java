@@ -1,9 +1,7 @@
 package com.claro.clientesapi.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
@@ -12,7 +10,6 @@ import java.util.List;
 @Entity
 @Table(name = "cliente")
 @NoArgsConstructor
-@RequiredArgsConstructor
 public class Cliente {
 
     @Id
@@ -36,10 +33,6 @@ public class Cliente {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getNombre() {

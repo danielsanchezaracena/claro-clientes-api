@@ -1,7 +1,5 @@
 package com.claro.clientesapi.dto;
 
-import lombok.Data;
-
 public class DireccionResponseDTO {
 
     private Long id;

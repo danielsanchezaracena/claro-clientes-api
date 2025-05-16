@@ -2,8 +2,6 @@ package com.claro.clientesapi.controller;
 
 import com.claro.clientesapi.dto.ClienteRequestDTO;
 import com.claro.clientesapi.dto.ClienteResponseDTO;
-import com.claro.clientesapi.entity.Cliente;
-import com.claro.clientesapi.external.ExternalApiService;
 import com.claro.clientesapi.service.ClienteService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -26,8 +24,8 @@ public class ClienteController {
 
     @POST
     public Response crearCliente(ClienteRequestDTO cliente){
-        ClienteResponseDTO c=clienteService.crearCliente(cliente);
-        return  Response.ok(c).status(Response.Status.CREATED).build();
+        ClienteResponseDTO clienteResponse=clienteService.crearCliente(cliente);
+        return  Response.ok(clienteResponse).status(Response.Status.CREATED).build();
     }
 
     @GET
@@ -39,8 +37,8 @@ public class ClienteController {
     @GET
     @Path("/{id}")
     public Response getCliente(@PathParam("id") Long id){
-        ClienteResponseDTO c=clienteService.getCliente(id);
-        return Response.ok(c).status(Response.Status.OK).build();
+        ClienteResponseDTO clienteResponse=clienteService.getCliente(id);
+        return Response.ok(clienteResponse).status(Response.Status.OK).build();
     }
 
     @DELETE
@@ -53,8 +51,8 @@ public class ClienteController {
     @PUT
     @Path("/{id}")
     public Response update(@PathParam("id") Long id, ClienteRequestDTO cliente) {
-        ClienteResponseDTO c=clienteService.modificarCliente(id,cliente);
-        return Response.ok(c).status(Response.Status.OK).build();
+        ClienteResponseDTO clienteResponse=clienteService.modificarCliente(id,cliente);
+        return Response.ok(clienteResponse).status(Response.Status.OK).build();
     }
 
 

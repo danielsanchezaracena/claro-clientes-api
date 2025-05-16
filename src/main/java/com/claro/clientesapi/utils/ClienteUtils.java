@@ -21,7 +21,8 @@ public class ClienteUtils {
     public static boolean isInValidRequest(ClienteRequestDTO request){
       return request.getNombre()==null || request.getNombre().isBlank()
             || request.getApellido()==null || request.getApellido().isBlank()
-              || request.getDirecciones()==null || request.getDirecciones().isEmpty();
+              || request.getDirecciones()==null || request.getDirecciones().isEmpty()
+              || request.getDirecciones().stream().anyMatch(String::isBlank);
     }
 
 }

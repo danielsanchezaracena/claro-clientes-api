@@ -2,17 +2,13 @@ package com.claro.clientesapi.service;
 
 import com.claro.clientesapi.dto.ClienteRequestDTO;
 import com.claro.clientesapi.dto.ClienteResponseDTO;
-import com.claro.clientesapi.dto.DireccionResponseDTO;
 import com.claro.clientesapi.entity.Cliente;
 import com.claro.clientesapi.entity.Direccion;
 import com.claro.clientesapi.exception.ClienteBadRequestException;
 import com.claro.clientesapi.exception.ClienteNoEncontradoException;
 import com.claro.clientesapi.repository.ClienteRepository;
 import com.claro.clientesapi.utils.ClienteUtils;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
